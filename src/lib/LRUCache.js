@@ -1,4 +1,5 @@
-const { Node, DoublyLinkedList } = require("./dll");
+const Node = require("./Node");
+const DoublyLinkedList = require("./DoublyLinkedList");
 
 // LRUCache takes a doubly-linked hashmap approach
 class LRUCache {
@@ -37,4 +38,4 @@ class LRUCache {
   }
 }
 
-module.exports.LRUCache = LRUCache;
+module.exports = LRUCache;

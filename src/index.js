@@ -1,4 +1,4 @@
-const { LRUCache } = require("./lib/lru");
+const LRUCache = require("./lib/LRUCache");
 
 const capacity = 4;
 
