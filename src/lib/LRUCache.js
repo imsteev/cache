@@ -4,6 +4,9 @@ const DoublyLinkedList = require("./DoublyLinkedList");
 // LRUCache takes a doubly-linked hashmap approach
 class LRUCache {
   constructor(capacity) {
+    if (capacity <= 0) {
+      throw Error("capacity must be positive number");
+    }
     this.capacity = capacity;
     this.dll = new DoublyLinkedList();
     this.map = {};
