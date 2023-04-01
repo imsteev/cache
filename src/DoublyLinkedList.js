@@ -1,13 +1,16 @@
 class DoublyLinkedList {
+  #head;
+  #tail;
+
   constructor() {
-    this.head = null;
-    this.tail = null;
+    this.#head = null;
+    this.#tail = null;
     this.size = 0;
   }
 
   push(node) {
-    if (!this.head) {
-      this.head = node;
+    if (!this.#head) {
+      this.#head = node;
       this.tail = node;
     } else {
       // Make node the new tail
@@ -23,12 +26,12 @@ class DoublyLinkedList {
     const prev = node.prev;
     const next = node.next;
     if (!prev && !next) {
-      this.head = null;
+      this.#head = null;
       this.tail = null;
     } else if (!prev && next) {
       // set a new head
-      this.head = next;
-      this.head.prev = null;
+      this.#head = next;
+      this.#head.prev = null;
     } else if (prev && !next) {
       // set a new tail
       this.tail = prev;
@@ -40,9 +43,18 @@ class DoublyLinkedList {
     this.size--;
   }
 
+  removeHead() {
+    if (!this.#head) {
+      return null;
+    }
+    const node = this.#head;
+    this.remove(this.#head);
+    return node;
+  }
+
   print() {
     const vals = [];
-    let ptr = this.head;
+    let ptr = this.#head;
     if (!ptr) {
       return "empty list";
     }

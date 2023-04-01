@@ -1,7 +1,7 @@
 const Node = require("./Node");
 const DoublyLinkedList = require("./DoublyLinkedList");
 
-// LRUCache takes a doubly-linked hashmap approach
+// LRUCache is capacity-aware data structure with a least-recently-used poilicy.
 class LRUCache {
   constructor(capacity) {
     if (capacity <= 0) {
@@ -35,8 +35,8 @@ class LRUCache {
     this.dll.push(this.map[key]);
 
     if (this.dll.size > this.capacity) {
-      delete this.map[this.dll.head.key];
-      this.dll.remove(this.dll.head);
+      const removed = this.dll.removeHead();
+      delete this.map[removed.key];
     }
   }
 }
