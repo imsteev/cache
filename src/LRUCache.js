@@ -34,7 +34,7 @@ class LRUCache {
     // make sure upserted key is "used"
     this.dll.push(this.map[key]);
 
-    if (this.dll.size > this.capacity) {
+    if (this.dll.length() > this.capacity) {
       const removed = this.dll.removeHead();
       delete this.map[removed.key];
     }

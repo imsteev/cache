@@ -1,11 +1,11 @@
 class DoublyLinkedList {
   #head;
   #tail;
+  #size = 0;
 
   constructor() {
     this.#head = null;
     this.#tail = null;
-    this.size = 0;
   }
 
   push(node) {
@@ -19,7 +19,7 @@ class DoublyLinkedList {
       this.tail.next = node;
       this.tail = node;
     }
-    this.size++;
+    this.#size++;
   }
 
   remove(node) {
@@ -40,7 +40,7 @@ class DoublyLinkedList {
       prev.next = next;
       next.prev = prev;
     }
-    this.size--;
+    this.#size--;
   }
 
   removeHead() {
@@ -52,17 +52,21 @@ class DoublyLinkedList {
     return node;
   }
 
+  length() {
+    return this.#size;
+  }
+
   print() {
     const vals = [];
     let ptr = this.#head;
     if (!ptr) {
       return "empty list";
     }
-    for (let i = 0; i < this.size; i++) {
+    for (let i = 0; i < this.length(); i++) {
       vals.push(ptr.key);
       ptr = ptr.next;
     }
-    console.log(vals.join("<>"), `(size: ${this.size})`);
+    console.log(vals.join("<>"), `(size: ${this.length()})`);
   }
 }
 
